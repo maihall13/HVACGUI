@@ -13,6 +13,7 @@ public class Furnace extends ServiceCall {
     }
 
     private FurnaceType type;
+    String name = "Furnace Service Call";
 
     public Furnace(String serviceAddress, String problemDescription, Date date, FurnaceType type) {
 
@@ -20,6 +21,9 @@ public class Furnace extends ServiceCall {
         this.type = type;
 
     }
+
+    public void getName(String name){this.name = name;}
+
 
     @Override
     public String toString() {

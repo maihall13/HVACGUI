@@ -10,6 +10,7 @@ import java.util.Date;
 public class CentralAC extends ServiceCall{
 
     private String model;
+    String name = "Central AC Unit Service Call";
 
 
     public CentralAC(String serviceAddress, String problemDescription, Date date, String model) {
@@ -24,6 +25,8 @@ public class CentralAC extends ServiceCall{
     public void setModel(String model) {
         this.model = model;
     }
+
+    public void getName(String name){this.name = name;}
 
 
     @Override

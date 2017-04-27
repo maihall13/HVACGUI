@@ -19,6 +19,7 @@ public class ServiceCall {
 
     protected String resolution;
     protected double fee;
+    protected String name;
 
     public ServiceCall(String serviceAddress, String problemDescription, Date date) {
         this.serviceAddress = serviceAddress;
@@ -75,6 +76,12 @@ public class ServiceCall {
     public void setFee(double fee) {
         this.fee = fee;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {return name;}
 
 
 }

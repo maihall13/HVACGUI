@@ -10,8 +10,8 @@ import java.util.*;
 
 public class ServiceCallManager {
 
-    private LinkedList<ServiceCall> todayServiceCalls;
-    private LinkedList<ServiceCall> resolvedServiceCalls;
+    public static LinkedList<ServiceCall> todayServiceCalls;
+    public static LinkedList<ServiceCall> resolvedServiceCalls;
     // Menu options, as an array
     String[] mainMenuOptions = {
             "1. Add service call to queue",
@@ -29,7 +29,7 @@ public class ServiceCallManager {
 
 
     /* Constructor sets up the two lists, the UserInput object, and starts the main menu */
-    public ServiceCallManager() {
+    public ServiceCallManager() throws NullPointerException{
 
         todayServiceCalls = new LinkedList<ServiceCall>();
 
@@ -76,7 +76,8 @@ public class ServiceCallManager {
 
 
     /* Displays the contents of an array; the array should hold each menu option. */
-    protected void displayMenu(String[] options) {
+    protected void displayMenu(String[] options) throws NullPointerException{
+        HVACForm form = new HVACForm();
         for (String option : options) {
             System.out.println(option);
         }
@@ -118,8 +119,8 @@ public class ServiceCallManager {
         String problem = Input.getStringInput("Enter description of problem");
         Furnace.FurnaceType type = Input.getFurnaceType();
         Furnace f = new Furnace(address, problem, new Date(), type);
+        f.setName("Furnace Service Call");
         todayServiceCalls.add(f);
-
         System.out.println("Added the following furnace to list of calls:\n" + f);
     }
 
@@ -132,6 +133,7 @@ public class ServiceCallManager {
         String model = Input.getStringInput("Enter model of AC unit");
 
         CentralAC ac = new CentralAC(address, problem, new Date(), model);
+        ac.setName("Central AC Unit Service Call");
         todayServiceCalls.add(ac);
         System.out.println("Added the following AC unit to list of calls:\n" + ac);
     }
@@ -144,6 +146,7 @@ public class ServiceCallManager {
         Double age = Input.getPositiveDoubleInput("Enter age of water heater");
 
         WaterHeater wh = new WaterHeater(address, problem, new Date(), age);
+        wh.setName("Water Heater Service Call");
         todayServiceCalls.add(wh);
         System.out.println("Added the following AC unit to list of calls:\n" + wh);
     }
@@ -152,7 +155,7 @@ public class ServiceCallManager {
     /* Resolve the call at the top of the queue
      Call is resolved by removing it from the queue, asking user
      for resolution and fee, and adding the call to the resolved calls queue
-     TODO - future version could allow user to resolve any call, not just the one at the top of the queue */
+      */
     private void resolveServiceCall() {
 
         if (todayServiceCalls.isEmpty()) {

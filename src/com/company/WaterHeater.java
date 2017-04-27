@@ -9,6 +9,7 @@ public class WaterHeater extends ServiceCall {
 
     private double age;
     static double upcharge = 20.00;
+    String name = "Water Heater Service Call";
 
     public WaterHeater(String serviceAddress, String problemDescription, Date date, double age) {
         super(serviceAddress, problemDescription, date);
@@ -23,6 +24,7 @@ public class WaterHeater extends ServiceCall {
         this.age = age;
     }
 
+    public void getName(String name){this.name = name;}
 
     @Override
     public String toString() {
